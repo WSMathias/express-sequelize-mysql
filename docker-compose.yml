@@ -1,0 +1,25 @@
+# Drupal 8 StarterKit.
+version: '3.8'
+
+volumes:
+  mysql-data:
+
+networks:
+  default:
+    name: node
+services:
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    networks:
+      - default
+  
+  
